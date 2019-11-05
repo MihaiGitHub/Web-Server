@@ -12,19 +12,27 @@ app.get('', (req, res) => {
     // What to send back to user when this page is hit
 
     // Send something back to requestor
-    res.send('Hello Express')
+    res.send('<h1>Weather</h1>')
 })
 
 app.get('/help', (req, res) => {
-    res.send('Help page')
+    // Will automatically stringify the json object for us and send to browser
+    // Can also send [{},{}]
+    res.send({
+        name: 'Mike',
+        age: 28
+    })
 })
 
 app.get('/about', (req, res) => {
-    res.send('About page')
+    res.send('<h1>About page</h1>')
 })
 
 app.get('/weather', (req, res) => {
-    res.send('Weather page')
+    res.send({
+        forecast: 'It is raining',
+        location: 'Phoenix'
+    })
 })
 
 // Start up server and have it listen on a specific port
