@@ -1,12 +1,22 @@
+// Core node module
+const path = require('path')
+
 const express = require('express')
 
+// Point to public directory
+console.log(path.join(__dirname, '../public'))
+
 const app = express()
+const publicDirectoryPath = path.join(__dirname, '../public')
+
+// Serve up directory
+app.use(express.static(publicDirectoryPath))
 
 // app.com is our domain which will run on a single express server
 // app.com
 // app.com/help
 // app.com/about
-
+/*
 // What the server should do when someone tries to get the resource at a specific url (ex: send back HTML or JSON)
 app.get('', (req, res) => {
     // What to send back to user when this page is hit
@@ -14,6 +24,7 @@ app.get('', (req, res) => {
     // Send something back to requestor
     res.send('<h1>Weather</h1>')
 })
+*/
 
 app.get('/help', (req, res) => {
     // Will automatically stringify the json object for us and send to browser
