@@ -24,7 +24,6 @@ app.get('', (req, res) => {
     // Send something back to requestor
     res.send('<h1>Weather</h1>')
 })
-*/
 
 app.get('/help', (req, res) => {
     // Will automatically stringify the json object for us and send to browser
@@ -38,7 +37,7 @@ app.get('/help', (req, res) => {
 app.get('/about', (req, res) => {
     res.send('<h1>About page</h1>')
 })
-
+*/
 app.get('/weather', (req, res) => {
     res.send({
         forecast: 'It is raining',
