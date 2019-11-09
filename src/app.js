@@ -9,6 +9,10 @@ console.log(path.join(__dirname, '../public'))
 const app = express()
 const publicDirectoryPath = path.join(__dirname, '../public')
 
+// Set up handlebars template engine
+// Allows to set a value for a given express setting; key and value
+app.set('view engine', 'hbs')
+
 // Serve up directory
 app.use(express.static(publicDirectoryPath))
 
@@ -16,28 +20,42 @@ app.use(express.static(publicDirectoryPath))
 // app.com
 // app.com/help
 // app.com/about
-/*
+
 // What the server should do when someone tries to get the resource at a specific url (ex: send back HTML or JSON)
 app.get('', (req, res) => {
     // What to send back to user when this page is hit
 
-    // Send something back to requestor
-    res.send('<h1>Weather</h1>')
+    // Render the index view back to requestor
+    res.render('index', {
+        // Contains all the values you want the view to access;
+        // Values to be injected into the template
+        title: 'Weather',
+        name: 'Mike'
+    })
 })
 
 app.get('/help', (req, res) => {
+    res.render('help', {
+        title: 'Help page',
+        name: 'Mike'
+    })
+    /*
     // Will automatically stringify the json object for us and send to browser
     // Can also send [{},{}]
     res.send({
         name: 'Mike',
         age: 28
     })
+    */
 })
 
 app.get('/about', (req, res) => {
-    res.send('<h1>About page</h1>')
+    res.render('about', {
+        title: 'About me',
+        name: 'Mike'
+    })
 })
-*/
+
 app.get('/weather', (req, res) => {
     res.send({
         forecast: 'It is raining',
