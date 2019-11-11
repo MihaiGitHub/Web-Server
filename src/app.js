@@ -7,11 +7,20 @@ const express = require('express')
 console.log(path.join(__dirname, '../public'))
 
 const app = express()
+
+// Define paths for Express config
 const publicDirectoryPath = path.join(__dirname, '../public')
+
+// Customize views folder to templates
+// __dirname path to the folder this file lives in (src)
+const viewsPath = path.join(__dirname, '../templates')
 
 // Set up handlebars template engine
 // Allows to set a value for a given express setting; key and value
 app.set('view engine', 'hbs')
+
+// Only needed if the views are in a custom directory instead of "views" directory
+app.set('views', viewsPath)
 
 // Serve up directory
 app.use(express.static(publicDirectoryPath))
