@@ -1,7 +1,8 @@
 // Core node module
 const path = require('path')
-
 const express = require('express')
+// For using partials
+const hbs = require('hbs')
 
 // Point to public directory
 console.log(path.join(__dirname, '../public'))
@@ -13,7 +14,9 @@ const publicDirectoryPath = path.join(__dirname, '../public')
 
 // Customize views folder to templates
 // __dirname path to the folder this file lives in (src)
-const viewsPath = path.join(__dirname, '../templates')
+const viewsPath = path.join(__dirname, '../templates/views')
+// Partials path that the handlebars module needs
+const partialsPath = path.join(__dirname, '../templates/partials')
 
 // Set up handlebars template engine
 // Allows to set a value for a given express setting; key and value
@@ -21,6 +24,9 @@ app.set('view engine', 'hbs')
 
 // Only needed if the views are in a custom directory instead of "views" directory
 app.set('views', viewsPath)
+
+// Register partials for the handlebars module
+hbs.registerPartials(partialsPath)
 
 // Serve up directory
 app.use(express.static(publicDirectoryPath))
