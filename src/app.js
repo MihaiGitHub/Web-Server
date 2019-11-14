@@ -78,6 +78,18 @@ app.get('/weather', (req, res) => {
     })
 })
 
+// Handle 404 errors for help subpages; needs to come last
+// * = match anything that hasn't been matched so far
+app.get('/help/*', (req, res) => {
+    res.send('Help article not found')
+})
+
+// Handle 404 errors; needs to come last
+// * = match anything that hasn't been matched so far
+app.get('*', (req, res) => {
+    res.send('My 404 page')
+})
+
 // Start up server and have it listen on a specific port
 // Usually there are default ports; For HTTP website it is port 80
 // Always need to restart server for changes to take effect
