@@ -81,13 +81,21 @@ app.get('/weather', (req, res) => {
 // Handle 404 errors for help subpages; needs to come last
 // * = match anything that hasn't been matched so far
 app.get('/help/*', (req, res) => {
-    res.send('Help article not found')
+    res.render('error', {
+        title: '404',
+        errorMessage: 'Help article not found',
+        name: 'Mike'
+    })
 })
 
 // Handle 404 errors; needs to come last
 // * = match anything that hasn't been matched so far
 app.get('*', (req, res) => {
-    res.send('My 404 page')
+    res.render('error', {
+        title: '404',
+        errorMessage: 'Page not found',
+        name: 'Mike'
+    })
 })
 
 // Start up server and have it listen on a specific port
