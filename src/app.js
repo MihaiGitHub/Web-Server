@@ -72,10 +72,31 @@ app.get('/about', (req, res) => {
 })
 
 app.get('/weather', (req, res) => {
+    if(!req.query.address){
+        return res.send({
+            error: 'You must provide an address'
+        })
+    }
+
     res.send({
         forecast: 'It is raining',
-        location: 'Phoenix'
+        location: 'Phoenix',
+        address: req.query.address
     })
+})
+
+app.get('/products', (req, res) => {
+    if(!req.query.search){
+        return res.send({
+            error: 'You must provide a search term'
+        })
+    }
+
+    // requ.query Contains all query string information; { search: 'games', rating: '5' }
+
+     req.send({
+         products: []
+     })
 })
 
 // Handle 404 errors for help subpages; needs to come last
