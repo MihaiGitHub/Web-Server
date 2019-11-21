@@ -81,7 +81,8 @@ app.get('/weather', (req, res) => {
         })
     }
 
-    geocode(req.query.address, (error, { latitude, longitude, location}) => {
+    // If no object is provided, default to null object
+    geocode(req.query.address, (error, { latitude, longitude, location } = {}) => {
         // If error stop function execution
         if(error){
             return res.send({ error })
