@@ -1,3 +1,4 @@
+// Server side javascript that will run on the server
 // Core node module
 const path = require('path')
 const express = require('express')
