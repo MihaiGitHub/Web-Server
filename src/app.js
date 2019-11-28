@@ -12,6 +12,8 @@ const forecast = require('./utils/forecast')
 console.log(path.join(__dirname, '../public'))
 
 const app = express()
+// Access environment variable; When deployed on Heroku it wll be a default port set by heroku
+const port = process.env.PORT || 3000
 
 // Define paths for Express config
 const publicDirectoryPath = path.join(__dirname, '../public')
@@ -142,7 +144,7 @@ app.get('*', (req, res) => {
 // Start up server and have it listen on a specific port
 // Usually there are default ports; For HTTP website it is port 80
 // Always need to restart server for changes to take effect
-app.listen(3000, () => {
+app.listen(port, () => {
     // Callback for after server starts
-    console.log('Server is up on port 3000')
+    console.log('Server is up on port ' + port)
 })
